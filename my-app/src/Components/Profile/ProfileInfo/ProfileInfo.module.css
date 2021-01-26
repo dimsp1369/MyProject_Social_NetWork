@@ -1,0 +1,11 @@
+.infoArea {
+    margin: 10px;
+    grid-area: d;
+    display: grid;
+    grid-template-areas:
+    'a dis'
+    'dis dis';
+    grid-template-rows: 30% auto;
+    grid-template-columns: 20% auto;
+}
+

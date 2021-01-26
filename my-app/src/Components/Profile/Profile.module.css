@@ -1,0 +1,24 @@
+.content {
+
+}
+
+.profileArea {
+    display: grid;
+    grid-template-areas:
+    'i i'
+    'd p';
+    grid-template-rows: 200px auto;
+    grid-template-columns: 60% auto;
+}
+
+.image {
+    grid-area: i;
+}
+
+.content img {
+    width: 1220px;
+    height: 200px;
+    border-radius: 10px;
+
+}
+

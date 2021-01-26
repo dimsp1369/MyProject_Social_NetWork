@@ -1,0 +1,17 @@
+.item a {
+    margin: 10px 0px 0px 10px;
+    color: black;
+    font-size: 20px;
+    font-family: "Roboto Light";
+    text-decoration: none;
+
+}
+
+.item a.active {
+    color: red;
+}
+
+.item img {
+    width: 50px;
+}
+

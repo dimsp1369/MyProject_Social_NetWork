@@ -1,0 +1,53 @@
+.contacts {
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+}
+
+.contactsList {
+    font-size: 20px;
+    font-family: "Roboto Light";
+    border-right: #99b5fa solid 2px;
+    display: grid;
+}
+
+.contactsList img {
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.contactsList .contact a {
+    color: black;
+    margin: 5px;
+    font-size: 18px;
+    padding: 5px;
+    font-family: "Roboto Light";
+    text-decoration: none;
+}
+
+.contactsList .contact a.active {
+    color: red;
+}
+
+.messages {
+    font-size: 20px;
+    font-family: "Roboto Light";
+}
+
+.messages .message {
+    font-size: 18px;
+    font-family: "Roboto Light";
+    padding: 10px;
+}
+
+.messages .message img {
+    width: 30px;
+
+}
+
+.itemPost {
+    padding: 10px;
+}
+

@@ -1,0 +1,6 @@
+.header {
+    grid-area: f;
+    background-color: skyblue;
+    border-radius: 10px;
+    padding: 10px;
+}

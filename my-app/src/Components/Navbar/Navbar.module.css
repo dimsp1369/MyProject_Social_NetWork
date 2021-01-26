@@ -1,0 +1,28 @@
+.nav {
+    grid-area: nav;
+    background-color: skyblue;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.itemF {
+
+    margin: 50px 0px 0px 0px;
+    color: white;
+    font-size: 22px;
+    font-family: "Roboto Light";
+    text-decoration: none;
+}
+
+.item a {
+    margin: 5px 0px 0px 10px;
+    color: white;
+    font-size: 22px;
+    font-family: "Roboto Light";
+    text-decoration: none;
+}
+
+.item a.active {
+    color: black;
+
+}

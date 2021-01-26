@@ -1,0 +1,26 @@
+.header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 150px auto;
+    background-color: skyblue;
+    font-size: 30px;
+    border-radius: 10px;
+  }
+
+.img {
+
+}
+
+.title {
+    font-family: "Roboto Light";
+    padding: 30px;
+  }
+
+
+.header img {
+    margin: 0px 0px 0px 10px;
+    width: 120px;
+    height: 80px;
+    border-radius: 40px;
+    padding: 10px;
+}

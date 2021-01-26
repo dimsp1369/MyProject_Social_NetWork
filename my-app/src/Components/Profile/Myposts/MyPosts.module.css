@@ -1,0 +1,10 @@
+.post {
+    grid-area: p;
+    margin: 10px;
+}
+
+.fill {
+    background: #f5f5f5;
+}
+
+

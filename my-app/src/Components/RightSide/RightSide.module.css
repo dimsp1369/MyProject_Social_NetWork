@@ -1,0 +1,15 @@
+.side {
+    grid-area: side;
+    background-color: skyblue;
+    border-radius: 10px;
+}
+
+.item {
+    margin: 5px 10px 0px 10px;
+    color: black;
+    font-size: 22px;
+    font-family: "Roboto Light";
+}
+
+
+
