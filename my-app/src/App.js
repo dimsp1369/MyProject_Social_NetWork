@@ -21,9 +21,9 @@ function App(props) {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path='/profile'
-                       render={() => <Profile store={props.store}/>}/>
+                       render={() => <Profile />}/>
                 <Route path='/contact'
-                       render={() => <ContactsContainer store={props.store}/>}/>
+                       render={() => <ContactsContainer/>}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>

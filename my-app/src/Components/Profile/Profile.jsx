@@ -3,7 +3,7 @@ import s from './Profile.module.css'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./Myposts/MyPostsContainer";
 
-const Profile = (props) => {
+const Profile = () => {
 
     return (
         <div className={s.content}>
@@ -17,7 +17,7 @@ const Profile = (props) => {
                     <ProfileInfo/>
                 </div>
                 <div>
-                    <MyPostsContainer store={props.store}/>
+                    <MyPostsContainer />
                 </div>
             </div>
         </div>

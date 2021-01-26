@@ -19,34 +19,30 @@ let initialState = {
 }
 
 const contactReducer = (state = initialState, action) => {
+    const newState = [...state.messages]
+    let newMessage = state.newMessage
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage = state.newMessage
-        if (newMessage !== '') {
-            state.messages.push({id: 5, message: newMessage})
-            state.newMessage = '';
-        }
-            return state;
+            if (newMessage !== '') {
+                newState.push({id: 5, message: newMessage})
+                newMessage = '';
+            }
+            return {...state, messages: newState, newMessage: newMessage};
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessage = action.newMessage;
-            return state
+            newMessage = action.newMessage;
+            return {...state, newMessage: newMessage}
         default:
             return state
     }
 }
 
-export const addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE
-    }
-}
+export const addMessageActionCreator = () => ({
+    type: ADD_MESSAGE
+})
 
-export const UpdateNewMessageActionCreator = (message) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessage: message
-
-    }
-}
+export const UpdateNewMessageActionCreator = (message) => ({
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    newMessage: message
+})
 
 export default contactReducer
