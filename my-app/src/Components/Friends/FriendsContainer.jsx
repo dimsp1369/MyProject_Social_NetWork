@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {followedStatus, setFriendsAC} from "../../Redux/friendsReducer";
+import FriendsC from "./FriendsC";
 
 
 const mapStateToProps = (state) => {
@@ -18,6 +19,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
+const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsC)
 
 export default FriendsContainer;
