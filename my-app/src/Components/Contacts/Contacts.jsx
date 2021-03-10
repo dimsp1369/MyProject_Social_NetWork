@@ -7,8 +7,8 @@ import Message from "./Messages/Message";
 
 const Contacts = (props) => {
 
-    let contactsElement = props.contacts.map(contact => <ContactItem name={contact.name} id={contact.id}/>);
-    let messagesElement = props.messages.map(message => <Message text={message.message}/>)
+    const contactsElement = props.contacts.map(contact => <ContactItem key={Math.random()} name={contact.name} id={contact.id}/>);
+    const messagesElement = props.messages.map(message => <Message key={Math.random()} text={message.message}/>)
 
     return (
         <div className={s.contacts}>
@@ -19,6 +19,7 @@ const Contacts = (props) => {
                 <Messages message={messagesElement}
                           dispatch={props.dispatch}
                           addMessage={props.addMessage}
+                          newMessage={props.newMessage}
                           UpdateNewMessageActionCreator={props.UpdateNewMessageActionCreator}/>
             </div>
 

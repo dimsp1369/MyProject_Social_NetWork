@@ -9,11 +9,12 @@ import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
 import {Route} from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
-import Friends from "./Components/Friends/Friends";
+
 import ContactsContainer from "./Components/Contacts/ContactsContainer";
+import FriendsContainer from "./Components/Friends/FriendsContainer";
 
 
-function App(props) {
+function App() {
 
     return (
         <div className='app-wrapper'>
@@ -27,7 +28,7 @@ function App(props) {
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
-                <Route path='/friends' render={() => <Friends state={props.state.friendsPage}/>}/>
+                <Route path='/friends' render={() => <FriendsContainer/>}/>
             </div>
             <RightSide/>
             <Footer/>

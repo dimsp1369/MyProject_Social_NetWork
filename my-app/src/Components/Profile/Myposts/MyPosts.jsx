@@ -5,14 +5,14 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let posts = props.posts.map(post => <Post text={post.message} count={post.likeCount}/>)
+    const posts = props.posts.map(post => <Post key={Math.random()} text={post.message} count={post.likeCount}/>)
 
-    let addPost = () => {
+    const addPost = () => {
         props.addPost()
     }
 
-    let onPostChange = (e) => {
-        let text = e.target.value;
+    const onPostChange = (e) => {
+        const text = e.target.value;
         props.updateNewPostText(text)
     }
 

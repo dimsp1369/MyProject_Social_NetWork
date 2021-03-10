@@ -4,14 +4,15 @@ import {addMessageActionCreator, UpdateNewMessageActionCreator} from "../../Redu
 import {connect} from "react-redux";
 
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         contacts: state.contactsPage.contacts,
-        messages: state.contactsPage.messages
+        messages: state.contactsPage.messages,
+        newMessage: state.contactsPage.newMessage
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addMessage: () => {
             dispatch(addMessageActionCreator())

@@ -19,18 +19,19 @@ let initialState = {
 }
 
 const contactReducer = (state = initialState, action) => {
-    const newState = [...state.messages]
-    let newMessage = state.newMessage
     switch (action.type) {
         case ADD_MESSAGE:
-            if (newMessage !== '') {
-                newState.push({id: 5, message: newMessage})
-                newMessage = '';
+            let text = state.newMessage
+            return {
+                ...state,
+                newMessage: '',
+                messages: [...state.messages, {id: 5, message: text}]
             }
-            return {...state, messages: newState, newMessage: newMessage};
         case UPDATE_NEW_MESSAGE_TEXT:
-            newMessage = action.newMessage;
-            return {...state, newMessage: newMessage}
+            return {
+                ...state,
+                newMessage: action.newMessage
+            }
         default:
             return state
     }
