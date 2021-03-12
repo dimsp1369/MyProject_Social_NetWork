@@ -3,3 +3,23 @@
     text-decoration: none;
 }
 
+.pages {
+    font-size: 16px;
+    padding-left: 5px;
+}
+.notActive {
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.pages:hover {
+    font-size: 20px;
+}
+
+.selectedPage {
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+
+

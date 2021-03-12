@@ -1,4 +1,5 @@
-import {combineReducers, createStore} from 'redux'
+import {applyMiddleware, combineReducers, createStore} from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import profileReducer from "./profileReducer";
 import contactReducer from "./contactReducer";
 import friendsReducer from "./friendsReducer";
@@ -9,6 +10,6 @@ let reducers = combineReducers({
     friendsPage: friendsReducer
 })
 
-let store = createStore(reducers)
+const store = createStore(reducers, composeWithDevTools(applyMiddleware()))
 
 export default store;

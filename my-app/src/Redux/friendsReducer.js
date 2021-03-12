@@ -1,90 +1,14 @@
 const FOLLOW = 'FOLLOW'
 const SET_FRIENDS = 'SET_FRIENDS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_CURRENT_PAGE_BUTTON = 'SET_CURRENT_PAGE_BUTTON'
+const TOTAL_COUNT_PAGES = 'TOTAL_COUNT_PAGES'
 
 let initialState = {
-    friends: [
-    //     {
-    //     id: 1,
-    //     avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //     followed: true,
-    //     statusText: '12314',
-    //     country: 'Russia',
-    //     city: 'Moscow',
-    //     name: 'Carl'
-    // },
-    //     {
-    //         id: 2,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: false,
-    //         statusText: 'ewrr',
-    //         country: 'Ukraine',
-    //         city: 'Kiev',
-    //         name: 'Allan'
-    //     },
-    //     {
-    //         id: 3,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: true,
-    //         statusText: '21312',
-    //         country: 'Russia',
-    //         city: 'Nizhny NOvgorod',
-    //         name: 'Nuddle'
-    //     },
-    //     {
-    //         id: 4,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: true,
-    //         statusText: 'erterte',
-    //         country: 'Ukraine',
-    //         city: 'Kiev',
-    //         name: 'Batman'
-    //     },
-    //     {
-    //         id: 5,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: false,
-    //         statusText: 'qweqweq werwr',
-    //         country: 'Russia',
-    //         city: 'Moscow',
-    //         name: 'BamBamBigelou'
-    //     },
-    //     {
-    //         id: 6,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: true,
-    //         statusText: 'erterte',
-    //         country: 'U.S.',
-    //         city: 'Chicago',
-    //         name: 'Polly'
-    //     },
-    //     {
-    //         id: 7,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: true,
-    //         statusText: 'qweqweqw',
-    //         country: 'UK',
-    //         city: 'London',
-    //         name: 'Frank'
-    //     },
-    //     {
-    //         id: 8,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: true,
-    //         statusText: 'erte rtert',
-    //         country: 'Japan',
-    //         city: 'Tokyo',
-    //         name: 'Pablo'
-    //     },
-    //     {
-    //         id: 9,
-    //         avatarURL: 'https://tse1.mm.bing.net/th/id/OIP.R_zG7xo9MGYSzYr2E2BxDQHaJQ?pid=ImgDet&rs=1',
-    //         followed: true,
-    //         statusText: 'qwewer etue',
-    //         country: 'Russia',
-    //         city: 'Moscow',
-    //         name: 'Den Marino'
-    //     }
-        ],
+    friends: [],
+    pageSize: 10,
+    totalFriendsCount: 0,
+    currentPage: 1
 }
 
 const friendsReducer = (state = initialState, action) => {
@@ -95,7 +19,13 @@ const friendsReducer = (state = initialState, action) => {
                 friends: state.friends.map(el => el.id === action.friendId ? {...el, followed: !el.followed} : {...el})
             }
         case SET_FRIENDS:
-            return {...state, friends: [...state.friends, ...action.friendsData]}
+            return {...state, friends: action.friendsData}
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.currentPage}
+        case TOTAL_COUNT_PAGES:
+            return {...state, totalFriendsCount: action.pagesData}
+        case SET_CURRENT_PAGE_BUTTON:
+            return {...state, currentPage: action.currentPage + action.move}
         default:
             return state
     }
@@ -107,6 +37,15 @@ export const followedStatus = (friendId) => ({
 
 export const setFriendsAC = (friendsData) => ({
     type: SET_FRIENDS, friendsData
+})
+export const setCurrentPageAC = (currentPage) => ({
+    type: SET_CURRENT_PAGE, currentPage: currentPage
+})
+export const setCurrentPageButtonAC = (currentPage, move) => ({
+    type: SET_CURRENT_PAGE_BUTTON, currentPage: currentPage, move: move
+})
+export const setTotalCountPAgesAC = (pagesData) => ({
+    type: TOTAL_COUNT_PAGES, pagesData
 })
 
 export default friendsReducer

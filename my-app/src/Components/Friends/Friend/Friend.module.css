@@ -51,3 +51,7 @@
     border-radius: 25px;
 }
 
+.selectedPage {
+    font-weight: bold;
+}
+
