@@ -1,4 +1,3 @@
-import React from 'react';
 import Contacts from "./Contacts";
 import {addMessageActionCreator, UpdateNewMessageActionCreator} from "../../Redux/contactReducer";
 import {connect} from "react-redux";

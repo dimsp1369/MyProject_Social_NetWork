@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import s from "./Friends.module.css";
-import * as axios from "axios";
+import axios from "axios";
 
 function PaginationBar(props) {
 
@@ -37,7 +37,6 @@ function PaginationBar(props) {
     //     props.setCurrentPage(tempPages[3] + 2)
     // }
 
-    console.log(props.currentPage)
     const onPageChanged = (pageNumber) => {
         props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${props.pageSize}`)
@@ -59,8 +58,8 @@ function PaginationBar(props) {
             <div>
                 {props.currentPage === 1 ? <span className={s.notActive}>Prev</span> :
                     <span className={s.pages} onClick={() => changePage(props.currentPage, -1)}>Prev</span>}
-                {tempPages.map(p => <span className={props.currentPage === p ? s.selectedPage : s.pages}
-                                          onClick={(e) => onPageChanged(p, 0)}>{p}</span>)}
+                {tempPages.map(p => <span key={Math.random()} className={props.currentPage === p ? s.selectedPage : s.pages}
+                                          onClick={(e) => onPageChanged(p)}>{p}</span>)}
                 {props.currentPage === pages.length ? <span className={s.notActive}>Next</span> :
                     <span className={s.pages} onClick={() => changePage(props.currentPage, +1)}>Next</span>}
             </div>

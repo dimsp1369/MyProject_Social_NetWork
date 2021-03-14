@@ -21,7 +21,8 @@ const friendsReducer = (state = initialState, action) => {
         case SET_FRIENDS:
             return {...state, friends: action.friendsData}
         case SET_CURRENT_PAGE:
-            return {...state, currentPage: action.currentPage}
+            console.log(action.pageNumber)
+            return {...state, currentPage: action.pageNumber}
         case TOTAL_COUNT_PAGES:
             return {...state, totalFriendsCount: action.pagesData}
         case SET_CURRENT_PAGE_BUTTON:
@@ -38,8 +39,8 @@ export const followedStatus = (friendId) => ({
 export const setFriendsAC = (friendsData) => ({
     type: SET_FRIENDS, friendsData
 })
-export const setCurrentPageAC = (currentPage) => ({
-    type: SET_CURRENT_PAGE, currentPage: currentPage
+export const setCurrentPageAC = (pageNumber) => ({
+    type: SET_CURRENT_PAGE, pageNumber: pageNumber
 })
 export const setCurrentPageButtonAC = (currentPage, move) => ({
     type: SET_CURRENT_PAGE_BUTTON, currentPage: currentPage, move: move

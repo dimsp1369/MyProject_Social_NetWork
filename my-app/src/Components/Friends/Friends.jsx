@@ -1,26 +1,20 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import s from './Friends.module.css'
 import Friend from "./Friend/Friend";
-import * as axios from 'axios'
+import PaginationBar from "./PaginationBar";
 
 
 const Friends = (props) => {
 
-    useEffect(() => {
-        if (props.friends.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                .then(response => {
-                    props.setFriends(response.data.items)
-                })
-        }
-    }, [])
-
-    const friendsElement = props.friends.map(friends => <Friend key={Math.random()} friends={friends}
-                                                                updateFollowedStatus={props.updateFollowedStatus}/>);
 
     return (
         <div className={s.frList}>
-            {friendsElement}
+            {props.friends.map(friends => <Friend key={Math.random()} friends={friends}
+                                                  updateFollowedStatus={props.updateFollowedStatus}/>)}
+            <PaginationBar totalFriendsCount={props.totalFriendsCount} pageSize={props.pageSize}
+                           currentPage={props.currentPage} setFriends={props.setFriends}
+                           onPageChanged={props.onPageChanged} changePage={props.changePage}
+                           setCurrentPage={props.setCurrentPage} setCurrentPageButton={props.setCurrentPageButton}/>
         </div>
     )
 
