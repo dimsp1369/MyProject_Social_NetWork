@@ -10,7 +10,7 @@ const Messages = (props) => {
 
     let onMessageChange = (e) => {
         let message = e.target.value;
-        props.UpdateNewMessageActionCreator(message)
+        props.UpdateNewMessage(message)
     }
     return <div className={s.messages}>
         <div>{props.message}</div>

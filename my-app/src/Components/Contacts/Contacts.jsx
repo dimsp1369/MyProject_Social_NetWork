@@ -20,7 +20,7 @@ const Contacts = (props) => {
                           dispatch={props.dispatch}
                           addMessage={props.addMessage}
                           newMessage={props.newMessage}
-                          UpdateNewMessageActionCreator={props.UpdateNewMessageActionCreator}/>
+                          UpdateNewMessage={props.UpdateNewMessage}/>
             </div>
 
         </div>

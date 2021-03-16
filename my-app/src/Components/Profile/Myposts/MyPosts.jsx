@@ -3,6 +3,7 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 
+
 const MyPosts = (props) => {
 
     const posts = props.posts.map(post => <Post key={Math.random()} text={post.message} count={post.likeCount}/>)
@@ -13,7 +14,7 @@ const MyPosts = (props) => {
 
     const onPostChange = (e) => {
         const text = e.target.value;
-        props.updateNewPostText(text)
+        props.updateNewPost(text)
     }
 
     return (

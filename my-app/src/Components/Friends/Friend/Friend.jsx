@@ -4,9 +4,8 @@ import {NavLink} from "react-router-dom";
 import userPhoto from '../../../assets/imges/user_no_photo_300x300.png'
 
 
-const Friend = ({friends, updateFollowedStatus}) => {
-    // setFriends([])
-    let path = '/friends/' + friends.id
+const Friend = ({friends, followedStatus}) => {
+    let path = '/profile/' + friends.id
     return (
         <div className={s.usersWrap}>
             <div className={s.user}>
@@ -16,7 +15,7 @@ const Friend = ({friends, updateFollowedStatus}) => {
                     </NavLink>
                     <div>
                         <button
-                            onClick={() => updateFollowedStatus(friends.id)}>{friends.followed ? 'follow' : 'unfollow'}</button>
+                            onClick={() => followedStatus(friends.id)}>{friends.followed ? 'follow' : 'unfollow'}</button>
                     </div>
                 </div>
                 <div className={s.userDescription}>

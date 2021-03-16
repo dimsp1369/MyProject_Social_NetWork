@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
-import Profile from "./Components/Profile/Profile";
 import RightSide from "./Components/RightSide/RightSide";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
@@ -12,6 +11,7 @@ import Footer from "./Components/Footer/Footer";
 
 import ContactsContainer from "./Components/Contacts/ContactsContainer";
 import FriendsContainer from "./Components/Friends/FriendsContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path='/profile'
-                       render={() => <Profile />}/>
+                       render={() => <ProfileContainer />}/>
                 <Route path='/contact'
                        render={() => <ContactsContainer/>}/>
                 <Route path='/news' render={() => <News/>}/>

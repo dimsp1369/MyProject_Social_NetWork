@@ -9,6 +9,8 @@ function PaginationBar(props) {
         pages.push(i)
     }
 
+    //Making numbers of pages bar compact and interactive
+
     const dots = '...'
     const dotsLeft = ' ...'
     const dotsRight = '... '
@@ -27,28 +29,23 @@ function PaginationBar(props) {
         const slice4 = tempPages.slice(tempPages.length - 5)
         tempPages = [1, dotsLeft, ...slice4]
     }
-    // else if (props.currentPage === dots) {
-    //     props.setCurrentPage(tempPages[4] + 1)
-    // } else if (props.currentPage === dotsLeft) {
-    //     let dotPage = props.currentPage
-    //
-    //     props.setCurrentPage(dotPage)
-    // } else if (props.currentPage === dotsRight) {
-    //     props.setCurrentPage(tempPages[3] + 2)
-    // }
 
     const onPageChanged = (pageNumber) => {
+        props.setToggleIsLoading(true)
         props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${props.pageSize}`)
             .then(response => {
+                props.setToggleIsLoading(false)
                 props.setFriends(response.data.items)
             })
     }
 
     const changePage = (pageNumber, move) => {
+        props.setToggleIsLoading(true)
         props.setCurrentPageButton(pageNumber, move)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber + move}&count=${props.pageSize}`)
             .then(response => {
+                props.setToggleIsLoading(false)
                 props.setFriends(response.data.items)
             })
     }
@@ -58,7 +55,8 @@ function PaginationBar(props) {
             <div>
                 {props.currentPage === 1 ? <span className={s.notActive}>Prev</span> :
                     <span className={s.pages} onClick={() => changePage(props.currentPage, -1)}>Prev</span>}
-                {tempPages.map(p => <span key={Math.random()} className={props.currentPage === p ? s.selectedPage : s.pages}
+                {tempPages.map(p => <span key={Math.random()}
+                                          className={props.currentPage === p ? s.selectedPage : s.pages}
                                           onClick={(e) => onPageChanged(p)}>{p}</span>)}
                 {props.currentPage === pages.length ? <span className={s.notActive}>Next</span> :
                     <span className={s.pages} onClick={() => changePage(props.currentPage, +1)}>Next</span>}

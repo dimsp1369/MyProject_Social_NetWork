@@ -3,12 +3,14 @@ const SET_FRIENDS = 'SET_FRIENDS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_CURRENT_PAGE_BUTTON = 'SET_CURRENT_PAGE_BUTTON'
 const TOTAL_COUNT_PAGES = 'TOTAL_COUNT_PAGES'
+const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING'
 
 let initialState = {
     friends: [],
     pageSize: 10,
     totalFriendsCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: false
 }
 
 const friendsReducer = (state = initialState, action) => {
@@ -27,26 +29,22 @@ const friendsReducer = (state = initialState, action) => {
             return {...state, totalFriendsCount: action.pagesData}
         case SET_CURRENT_PAGE_BUTTON:
             return {...state, currentPage: action.currentPage + action.move}
+        case TOGGLE_IS_LOADING:
+            return {...state, isLoading: action.isLoading}
         default:
             return state
     }
 }
 
-export const followedStatus = (friendId) => ({
-    type: FOLLOW, friendId
+export const followedStatus = (friendId) => ({type: FOLLOW, friendId})
+export const setFriends = (friendsData) => ({type: SET_FRIENDS, friendsData})
+export const setCurrentPage = (pageNumber) => ({type: SET_CURRENT_PAGE, pageNumber: pageNumber})
+export const setCurrentPageButton = (currentPage, move) => ({
+    type: SET_CURRENT_PAGE_BUTTON,
+    currentPage: currentPage,
+    move: move
 })
-
-export const setFriendsAC = (friendsData) => ({
-    type: SET_FRIENDS, friendsData
-})
-export const setCurrentPageAC = (pageNumber) => ({
-    type: SET_CURRENT_PAGE, pageNumber: pageNumber
-})
-export const setCurrentPageButtonAC = (currentPage, move) => ({
-    type: SET_CURRENT_PAGE_BUTTON, currentPage: currentPage, move: move
-})
-export const setTotalCountPAgesAC = (pagesData) => ({
-    type: TOTAL_COUNT_PAGES, pagesData
-})
+export const setTotalCountPages = (pagesData) => ({type: TOTAL_COUNT_PAGES, pagesData})
+export const setToggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading})
 
 export default friendsReducer

@@ -1,5 +1,5 @@
 import Contacts from "./Contacts";
-import {addMessageActionCreator, UpdateNewMessageActionCreator} from "../../Redux/contactReducer";
+import {addMessage, UpdateNewMessage} from "../../Redux/contactReducer";
 import {connect} from "react-redux";
 
 
@@ -11,17 +11,17 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator())
-        },
-        UpdateNewMessageActionCreator: (message) => {
-            dispatch(UpdateNewMessageActionCreator(message))
-        }
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addMessage: () => {
+//             dispatch(addMessage())
+//         },
+//         UpdateNewMessage: (message) => {
+//             dispatch(UpdateNewMessage(message))
+//         }
+//     }
+// }
 
-const ContactsContainer = connect(mapStateToProps, mapDispatchToProps)(Contacts)
+const ContactsContainer = connect(mapStateToProps, {addMessage, UpdateNewMessage})(Contacts)
 
 export default ContactsContainer;

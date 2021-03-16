@@ -37,13 +37,7 @@ const contactReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = () => ({
-    type: ADD_MESSAGE
-})
-
-export const UpdateNewMessageActionCreator = (message) => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    newMessage: message
-})
+export const addMessage = () => ({type: ADD_MESSAGE})
+export const UpdateNewMessage = (message) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessage: message})
 
 export default contactReducer
