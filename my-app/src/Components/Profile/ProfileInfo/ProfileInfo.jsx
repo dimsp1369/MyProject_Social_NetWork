@@ -1,25 +1,24 @@
 import React from 'react';
-import s from './ProfileInfo.module.css'
+import s from '../Profile.module.css'
 import Avatar from "./Avatar/Avatar";
-import Discription from "./Discription/Discription";
-import Preloader from "../../common/Preloader/Preloader";
+import Description from "./Description/Description";
+import ContactNavigation from "./ContactNavigation";
 
 
 const ProfileInfo = (props) => {
-    return <>
-        {!props.userProfile ? <Preloader/> : <div className={s.infoArea}>
-            <h3 style={{textTransform: "capitalize"}}>{props.userProfile.fullName}</h3>
+    return <div>
+        <div>
             <div>
-                <div>
-                    <Avatar userAvatar={props.userProfile}/>
-                </div>
-                <div>
-                    <Discription userProfile={props.userProfile}/>
-                </div>
+                <Avatar userAvatar={props.userProfile}/>
+            </div>
+            <div className={s.prof_contacts}>
+                <ContactNavigation userContactInfo={props.userProfile.contacts}/>
+            </div>
+            <div>
+                <Description userProfile={props.userProfile}/>
             </div>
         </div>
-        }
-    </>
+    </div>
 }
 
 export default ProfileInfo;

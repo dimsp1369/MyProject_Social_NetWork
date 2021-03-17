@@ -1,8 +1,7 @@
 import React from 'react';
-import s from './Avatar.module.css'
 
 const Avatar = (props) => {
-    return <div className={s.avatar}>
+    return <div>
         <div>
             <img src={props.userAvatar.photos.large} alt="UserAvatar"/>
         </div>

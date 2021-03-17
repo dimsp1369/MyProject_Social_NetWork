@@ -1,5 +1,5 @@
 .app-wrapper {
-    margin: 0px 100px 0px 100px;
+    margin: 0 10%;
     display: grid;
     width: auto;
     grid-template-areas:
@@ -7,15 +7,15 @@
   'nav content side'
   'f f f';
 
-    grid-template-columns: 250px auto 250px;
-    grid-template-rows: 100px auto 80px;
+    grid-template-columns: 200px 1500px 200px;
+    grid-template-rows: 100px auto 50px;
     column-gap: 4px;
     row-gap: 4px;
 }
 
 .app-wrapper-content {
     grid-area: content;
-    background-color: #eff4fc;
+    background-color: #fff;
     border-radius: 10px;
 }
 

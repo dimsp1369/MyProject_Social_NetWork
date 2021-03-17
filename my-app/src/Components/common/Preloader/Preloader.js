@@ -1,10 +1,13 @@
-import s from "../../Friends/Friends.module.css";
+import s from './Preloader.module.css'
 import isLoading from "../../../assets/gif/loading-gif-png-5.gif";
 import React from "react";
 
-const Preloader = (props) => {
+const Preloader = () => {
     return (
-        <img className={s.isLoader} src={isLoading} alt="isLoading"/>
+        <div className={s.preLoader_Wrapper}>
+            <img className={s.preLoader} src={isLoading} alt="isLoading"/>
+        </div>
+
     )
 }
 

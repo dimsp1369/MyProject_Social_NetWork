@@ -1,7 +1,0 @@
-.infoArea {
-    margin: 10px;
-    grid-area: d;
-    grid-template-rows: 30% auto;
-    grid-template-columns: 30% auto;
-}
-
