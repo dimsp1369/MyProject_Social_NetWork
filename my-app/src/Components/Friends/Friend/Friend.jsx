@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Friend.module.css'
 import {NavLink} from "react-router-dom";
 import userPhoto from '../../../assets/imges/user_no_photo_300x300.png'
+import {userFollow, userUnfollow} from "../../../api/api";
 
 
 const Friend = ({friends, followedStatus}) => {
@@ -14,8 +15,16 @@ const Friend = ({friends, followedStatus}) => {
                         <img src={friends.photos.small !== null ? friends.photos.small : userPhoto} alt="avatar"/>
                     </NavLink>
                     <div>
-                        <button
-                            onClick={() => followedStatus(friends.id)}>{friends.followed ? 'follow' : 'unfollow'}</button>
+                        {!friends.followed ? <button onClick={() => {
+                                userFollow(friends.id).then(data => {
+                                    if (data.resultCode === 0) followedStatus(friends.id)
+                                })
+                            }}> follow </button> :
+                            <button onClick={() => {
+                                userUnfollow(friends.id).then(data => {
+                                    if (data.resultCode === 0) followedStatus(friends.id)
+                                })
+                            }}> unfollow </button>}
                     </div>
                 </div>
                 <div className={s.userDescription}>

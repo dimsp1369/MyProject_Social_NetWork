@@ -1,6 +1,6 @@
 import React from 'react'
 import s from "./Friends.module.css";
-import axios from "axios";
+import {getUsers} from "../../api/api";
 
 function PaginationBar(props) {
 
@@ -33,21 +33,19 @@ function PaginationBar(props) {
     const onPageChanged = (pageNumber) => {
         props.setToggleIsLoading(true)
         props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${props.pageSize}`)
-            .then(response => {
-                props.setToggleIsLoading(false)
-                props.setFriends(response.data.items)
-            })
+        getUsers(pageNumber, props.pageSize).then(data => {
+            props.setToggleIsLoading(false)
+            props.setFriends(data.items)
+        })
     }
 
     const changePage = (pageNumber, move) => {
         props.setToggleIsLoading(true)
         props.setCurrentPageButton(pageNumber, move)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber + move}&count=${props.pageSize}`)
-            .then(response => {
-                props.setToggleIsLoading(false)
-                props.setFriends(response.data.items)
-            })
+        getUsers((pageNumber + move), props.pageSize).then(data => {
+            props.setToggleIsLoading(false)
+            props.setFriends(data.items)
+        })
     }
 
     return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import RightSide from "./Components/RightSide/RightSide";
 import News from "./Components/News/News";
@@ -12,16 +11,17 @@ import Footer from "./Components/Footer/Footer";
 import ContactsContainer from "./Components/Contacts/ContactsContainer";
 import FriendsContainer from "./Components/Friends/FriendsContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 
 function App() {
 
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <Navbar/>
             <div className='app-wrapper-content'>
-                <Route path='/profile'
+                <Route path='/profile/:userId?'
                        render={() => <ProfileContainer />}/>
                 <Route path='/contact'
                        render={() => <ContactsContainer/>}/>

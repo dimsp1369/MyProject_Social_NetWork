@@ -4,19 +4,19 @@ import Friends from "./Friends";
 import {
     followedStatus, setCurrentPage, setCurrentPageButton, setFriends, setToggleIsLoading, setTotalCountPages
 } from "../../Redux/friendsReducer";
-import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import {getUsers} from "../../api/api";
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.setToggleIsLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setToggleIsLoading(false)
-                this.props.setFriends(response.data.items)
-                this.props.setTotalCountPages(response.data.totalCount)
-            })
+
+        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.setToggleIsLoading(false)
+            this.props.setFriends(data.items)
+            this.props.setTotalCountPages(data.totalCount)
+        })
     }
 
     render() {

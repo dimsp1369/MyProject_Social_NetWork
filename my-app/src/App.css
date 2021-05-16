@@ -9,14 +9,13 @@
 
     grid-template-columns: 200px 1500px 200px;
     grid-template-rows: 100px auto 50px;
-    column-gap: 4px;
-    row-gap: 4px;
+    column-gap: 5px;
+    row-gap: 5px;
 }
 
 .app-wrapper-content {
     grid-area: content;
     background-color: #fff;
-    border-radius: 10px;
 }
 
 
