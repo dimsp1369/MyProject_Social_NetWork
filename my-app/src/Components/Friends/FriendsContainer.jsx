@@ -2,7 +2,13 @@ import React from 'react';
 import {connect} from "react-redux";
 import Friends from "./Friends";
 import {
-    followedStatus, setCurrentPage, setCurrentPageButton, setFriends, setToggleIsLoading, setTotalCountPages
+    followedStatus,
+    setCurrentPage,
+    setCurrentPageButton,
+    setFriends,
+    setToggleIsFollowing,
+    setToggleIsLoading,
+    setTotalCountPages
 } from "../../Redux/friendsReducer";
 import Preloader from "../common/Preloader/Preloader";
 import {getUsers} from "../../api/api";
@@ -28,7 +34,9 @@ class FriendsContainer extends React.Component {
                              onPageChanged={this.onPageChanged} changePage={this.changePage}
                              setCurrentPage={this.props.setCurrentPage}
                              setCurrentPageButton={this.props.setCurrentPageButton}
-                             setToggleIsLoading={this.props.setToggleIsLoading}/>}
+                             setToggleIsLoading={this.props.setToggleIsLoading}
+                             setToggleIsFollowing={this.props.setToggleIsFollowing}
+                             isFollowing={this.props.isFollowing}/>}
             </>
         )
     }
@@ -41,6 +49,7 @@ const mapStateToProps = (state) => {
         totalFriendsCount: state.friendsPage.totalFriendsCount,
         currentPage: state.friendsPage.currentPage,
         isLoading: state.friendsPage.isLoading,
+        isFollowing: state.friendsPage.isFollowing
     }
 }
 
@@ -62,5 +71,6 @@ export default connect(mapStateToProps,
         setCurrentPage,
         setTotalCountPages,
         setCurrentPageButton,
-        setToggleIsLoading
+        setToggleIsLoading,
+        setToggleIsFollowing
     })(FriendsContainer)

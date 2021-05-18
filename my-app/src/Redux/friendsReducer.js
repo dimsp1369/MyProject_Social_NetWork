@@ -4,13 +4,15 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_CURRENT_PAGE_BUTTON = 'SET_CURRENT_PAGE_BUTTON'
 const TOTAL_COUNT_PAGES = 'TOTAL_COUNT_PAGES'
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING'
+const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING'
 
 let initialState = {
     friends: [],
     pageSize: 10,
     totalFriendsCount: 0,
     currentPage: 1,
-    isLoading: false
+    isLoading: false,
+    isFollowing: []
 }
 
 const friendsReducer = (state = initialState, action) => {
@@ -31,6 +33,11 @@ const friendsReducer = (state = initialState, action) => {
             return {...state, currentPage: action.currentPage + action.move}
         case TOGGLE_IS_LOADING:
             return {...state, isLoading: action.isLoading}
+        case TOGGLE_IS_FOLLOWING:
+            return {
+                ...state,
+                isFollowing: action.isFetch ? [...state.isFollowing, action.userId] : state.isFollowing.filter(id => id !== action.userId)
+            }
         default:
             return state
     }
@@ -46,5 +53,6 @@ export const setCurrentPageButton = (currentPage, move) => ({
 })
 export const setTotalCountPages = (pagesData) => ({type: TOTAL_COUNT_PAGES, pagesData})
 export const setToggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading})
+export const setToggleIsFollowing = (isFetch, userId) => ({type: TOGGLE_IS_FOLLOWING, isFetch, userId})
 
 export default friendsReducer
