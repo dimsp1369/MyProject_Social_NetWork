@@ -36,12 +36,15 @@ const friendsReducer = (state = initialState, action) => {
         case TOGGLE_IS_FOLLOWING:
             return {
                 ...state,
-                isFollowing: action.isFetch ? [...state.isFollowing, action.userId] : state.isFollowing.filter(id => id !== action.userId)
+                isFollowing: action.isFetch
+                    ? [...state.isFollowing, action.userId]
+                    : state.isFollowing.filter(id => id !== action.userId)
             }
         default:
             return state
     }
 }
+
 
 export const followedStatus = (friendId) => ({type: FOLLOW, friendId})
 export const setFriends = (friendsData) => ({type: SET_FRIENDS, friendsData})
